@@ -1,4 +1,5 @@
-use sevletDb;
+CREATE DATABASE servletDb;
+USE servletDb;
 CREATE TABLE employeetbl (
         e_id INT NOT NULL AUTO_INCREMENT,
         e_name VARCHAR(100),
