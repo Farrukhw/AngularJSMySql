@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:
+  web:
+    image: tomcat
+    restart: always
+
+    networks:
+    - dice.net
+    depends_on:  
+    - mysql_DB
+
+    ports:
+    - 8889:8080
+
+    volumes:
+    - ./target/*.war:/usr/local/tomcat/webapps/
+
+  mysql_DB:
+    build:
+      context: AngularJsMySql/ 
+      dockerfile: Dockerfile
+    init: true
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+
+    networks: 
+    - dice.net
+ 
+networks:
+  dice.net:
