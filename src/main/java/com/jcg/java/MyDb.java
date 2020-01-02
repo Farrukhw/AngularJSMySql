@@ -19,7 +19,7 @@ public class MyDb {
 //		String connUrl = "jdbc:mysql://localhost:3306/servletDb",
 //				connName = "root", connPwd = "12345";
 		
-		String connUrl = "jdbc:mysql://mysql_2/servletDb", connName = "root", connPwd = "12345";
+		String connUrl = "jdbc:mysql://mysql_8018/servletDb", connName = "root", connPwd = "12345";
                 
 		try {
 //			Class.forName("com.mysql.jdbc.Driver");
