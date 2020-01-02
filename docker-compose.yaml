@@ -1,29 +1,32 @@
 version: '3.7'
 
 services:
-  web:
-    image: tomcat
-    restart: always
+  web: # this would become the DNS name of the container in dice.net network
+    build: 
+      context: ./
+      dockerfile: Dockerfile.web
 
+      # Dockerfile.web is copying the output (*.war) from AngularJsMySql project. 
+      # If context of Dockerfile.web is in some other folder, then docker-compose may give error 
+      # that it doesn't allow copying of files out of context.
+    init: true
+    restart: always
     networks:
     - dice.net
+
     depends_on:  
-    - mysql_DB
+    - mysql_db
 
     ports:
-    - 8889:8080
+    - 9000-9005:8080
 
-    volumes:
-    - ./target/*.war:/usr/local/tomcat/webapps/
-
-  mysql_DB:
+  mysql_db: # this would become the DNS name of the container in dice.net network
     build:
-      context: AngularJsMySql/ 
-      dockerfile: Dockerfile
+      context: ./
+      dockerfile: Dockerfile.db
     init: true
     command: --default-authentication-plugin=mysql_native_password
     restart: always
-
     networks: 
     - dice.net
  

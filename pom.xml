@@ -48,7 +48,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>AngularJsSql</finalName>               
+        <finalName>mysqldb</finalName>               
     </build>
     <description>An example project using Angular.js as frontend and reading data from MySql database.</description>
 </project>
